@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.2)  23 SEP 2019 14:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.2.2)  23 SEP 2019 15:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -119,31 +119,31 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 24.
+(Font)              <12> on input line 39.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 24.
+(Font)              <8> on input line 39.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 24.
+(Font)              <6> on input line 39.
 
-Overfull \hbox (73.4921pt too wide) in paragraph at lines 24--53
-[][] 
+Overfull \hbox (38.24246pt too wide) in paragraph at lines 39--68
+ [][] 
  []
 
 [2] [3] [4] (./prog_proj_assignment_part1.aux) ) 
 Here is how much of TeX's memory you used:
- 1034 strings out of 494805
- 15150 string characters out of 6178001
- 76273 words of memory out of 5000000
- 4417 multiletter control sequences out of 15000+600000
+ 1035 strings out of 494805
+ 15156 string characters out of 6178001
+ 78273 words of memory out of 5000000
+ 4418 multiletter control sequences out of 15000+600000
  8848 words of font info for 31 fonts, out of 8000000 for 9000
  81 hyphenation exceptions out of 8191
- 24i,6n,32p,180b,261s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 24i,7n,32p,452b,221s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmti12.pfb>
-Output written on prog_proj_assignment_part1.pdf (4 pages, 52238 bytes).
+Output written on prog_proj_assignment_part1.pdf (4 pages, 55766 bytes).
 PDF statistics:
  33 PDF objects out of 1000 (max. 8388607)
  22 compressed objects within 1 object stream

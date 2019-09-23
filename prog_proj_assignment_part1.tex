@@ -19,8 +19,23 @@
 \section{Exercise 1}
 
 \begin{enumerate}[(a)]
-\item lmao
+\item Refer to Table 1.
 
+\item There are three boxes adjacent to the agent in the initial state. Using BFS, the agent is forced to consider neighbor boxes at the present depth prior to moving on in each iteration. This means, the agent has significantly more states to iterate through before moving onto a higher depth state. 
+
+\item Our implementation of DFS differs from the implementation of BFS in that it uses a stack instead of a queue since DFS requires LIFO data structure. 
+
+\item Our BFS algorithm has a much better performance on this level because the initial state of the level is close to the goal state in the sense that it does not require much moving of the boxes. On the other hand, our DFS algorithm performed poorly because the algorithm has to iterate through each state until success or failure which resulted in a much longer search time -- well it didn't end up solving.
+
+\item Our BFS algorithm performs poorly because there are too many boxes in the map so the search space becomes exponential. Since DFS is not limited to searching the entire depth level's search space before progressing, the DFS is not bound by the number of boxes in the map. 
+
+\item Refer to Table 1. 
+
+
+\end{enumerate}
+
+\begin{table}
+\centering
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
 \textbf{Level} & \textbf{Frontier} & \textbf{Time} & \textbf{Memory Used} & \textbf{Solution length} & \textbf{States Generated} \\
@@ -29,34 +44,30 @@ SAD1 & BFS & 0.201 s & 24.33 MB & 19 & 80 \\
 \hline
 SAD1 & DFS & 0.204 s & 13.95 MB & 27 & 75 \\
 \hline
-SAD2 & BFS & 24.102 s & exceeded & --- & 51690 \\
+SAD2 & BFS & --- & exceeded & --- & --- \\
 \hline
 SAD2 & DFS & 0.184 s & 10.85 MB & 25 & 86 \\
 \hline
-SAfriendofDFS & BFS &  & & &  \\
+SAfriendofDFS & BFS & --- & exceeded & --- & --- \\
 \hline
-SAfriendofDFS & DFS &  & & &  \\
+SAfriendofDFS & DFS & 0.225 s & 31.83 MB & 60 & 305 \\
 \hline
-SAfriendofBFS & BFS &  & & &  \\
+SAfriendofBFS & BFS & 0.686 s & 138.64 MB & 3 & 1,227 \\
 \hline
-SAfriendofBFS & DFS &  & & &  \\
+SAfriendofBFS & DFS & --- & exceeded & --- & --- \\
 \hline
-SAFirefly & BFS &  & & &  \\
+SAFirefly & BFS & --- & exceeded & --- & --- \\
 \hline
-SAFirefly & DFS &  & & &  \\
+SAFirefly & DFS & --- & exceeded & --- & --- \\
 \hline
-SACrunch & BFS &  & & &  \\
+SACrunch & BFS & --- & exceeded & --- & --- \\
 \hline
-SACrunch & DFS &  & & &  \\
+SACrunch & DFS & --- & exceeded & --- & --- \\
 \hline
 \end{tabular}
+\caption{Benchmarks table for Exercise 1}
+\end{table}
 
-\item b
-
-\item c
-
-
-\end{enumerate}
 
 
 \pagebreak
