@@ -28,16 +28,33 @@ public class State
         For example, this.walls[2] is an array of booleans for the third row.
         this.walls[row][col] is true if there's a wall at (row, col).
     */
-    public boolean[][] walls;
+   
+    // public boolean[][] walls;
+    public static boolean[][] walls;
     public char[][] boxes;
     public Color[] boxColors;
-    public char[][] goals;
+    // public char[][] goals;
+    public static char[][] goals;
 
     public final State parent;
     public final Action[] jointAction;
     private final int g;
 
     private int _hash = 0;
+
+    public State(int[] agentRows, int[] agentCols, Color[] agentColors,
+                 char[][] boxes, Color[] boxColors
+    )
+    {
+        this.agentRows = agentRows;
+        this.agentCols = agentCols;
+        this.agentColors = agentColors;
+        this.boxes = boxes;
+        this.boxColors = boxColors;
+        this.parent = null;
+        this.jointAction = null;
+        this.g = 0;
+    }
 
     /**
      * Constructs an initial state.
@@ -52,11 +69,21 @@ public class State
         this.agentColors = agentColors;
         this.walls = walls;
         this.boxes = boxes;
+        // walls = walls;
         this.boxColors = boxColors;
         this.goals = goals;
+        // goals = goals;
         this.parent = null;
         this.jointAction = null;
         this.g = 0;
+
+        // System.out.println("WALLS: ");
+        // for(int i=0;i<walls.length;i++) {
+        //     for(int j=0;j<walls[i].length;j++) {
+        //         System.out.print(walls[i][j] ? '1' : '0');
+        //     }
+        //     System.out.println();
+        // }
     }
 
     /**
@@ -69,22 +96,22 @@ public class State
         this.agentRows = Arrays.copyOf(parent.agentRows, parent.agentRows.length);
         this.agentCols = Arrays.copyOf(parent.agentCols, parent.agentCols.length);
         this.agentColors = Arrays.copyOf(parent.agentColors, parent.agentColors.length);
-        this.walls = new boolean[parent.walls.length][];
-        for (int i = 0; i < parent.walls.length; i++)
-        {
-            this.walls[i] = Arrays.copyOf(parent.walls[i], parent.walls[i].length);
-        }
+        // this.walls = new boolean[parent.walls.length][];
+        // for (int i = 0; i < parent.walls.length; i++)
+        // {
+        //     this.walls[i] = Arrays.copyOf(parent.walls[i], parent.walls[i].length);
+        // }
         this.boxes = new char[parent.boxes.length][];
         for (int i = 0; i < parent.boxes.length; i++)
         {
             this.boxes[i] = Arrays.copyOf(parent.boxes[i], parent.boxes[i].length);
         }
         this.boxColors = Arrays.copyOf(parent.boxColors, parent.boxColors.length);
-        this.goals = new char[parent.goals.length][];
-        for (int i = 0; i < parent.goals.length; i++)
-        {
-            this.goals[i] = Arrays.copyOf(parent.goals[i], parent.goals[i].length);
-        }
+        // this.goals = new char[parent.goals.length][];
+        // for (int i = 0; i < parent.goals.length; i++)
+        // {
+        //     this.goals[i] = Arrays.copyOf(parent.goals[i], parent.goals[i].length);
+        // }
         this.parent = parent;
         this.jointAction = Arrays.copyOf(jointAction, jointAction.length);
         this.g = parent.g + 1;
@@ -137,17 +164,21 @@ public class State
     {
         for (int row = 1; row < this.goals.length - 1; row++)
         {
+            // System.out.println("a");
             for (int col = 1; col < this.goals[row].length - 1; col++)
             {
+                // System.out.println("b");
                 char goal = this.goals[row][col];
 
                 if ('A' <= goal && goal <= 'Z' && this.boxes[row][col] != goal)
                 {
+                // System.out.println("c");
                     return false;
                 }
                 else if ('0' <= goal && goal <= '9' &&
                          !(this.agentRows[goal - '0'] == row && this.agentCols[goal - '0'] == col))
                 {
+                    // System.out.println("d");
                     return false;
                 }
             }

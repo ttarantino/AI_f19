@@ -55,9 +55,13 @@ public class SearchClient
         boolean[][] walls = new boolean[130][130];
         char[][] boxes = new char[130][130];
         line = serverMessages.readLine();
+        int maxCol = 0;
         int row = 0;
         while (!line.startsWith("#"))
-        {
+        {   
+            if (line.length() > maxCol) // find the widest column
+                maxCol = line.length();  
+
             for (int col = 0; col < line.length(); ++col)
             {
                 char c = line.charAt(col);
@@ -77,20 +81,33 @@ public class SearchClient
                     walls[row][col] = true;
                 }
             }
-
             ++row;
             line = serverMessages.readLine();
         }
         agentRows = Arrays.copyOf(agentRows, numAgents);
         agentCols = Arrays.copyOf(agentCols, numAgents);
 
+        // optimize the arrays
+        boolean[][] optWalls = new boolean[row][maxCol];
+        char[][] optBoxes = new char[row][maxCol];
+        // copy over 
+        for(int r=0;r<row;r++) {
+            for(int c=0;c<maxCol;c++) {
+                optWalls[r][c] = walls[r][c];
+                optBoxes[r][c] = boxes[r][c];
+            }
+        }
+
         // Read goal state.
         // line is currently "#goal".
         char[][] goals = new char[130][130];
         line = serverMessages.readLine();
         row = 0;
+        maxCol = 0;
         while (!line.startsWith("#"))
         {
+            if (line.length() > maxCol)
+                maxCol = line.length();
             for (int col = 0; col < line.length(); ++col)
             {
                 char c = line.charAt(col);
@@ -105,10 +122,24 @@ public class SearchClient
             line = serverMessages.readLine();
         }
 
+        // optimize the arrays
+        char[][] optGoals = new char[row][maxCol];
+        // copy over 
+        for(int r=0;r<row;r++) {
+            for(int c=0;c<maxCol;c++) {
+                optGoals[r][c] = goals[r][c];
+            }
+        }
+
         // End.
         // line is currently "#end".
 
-        return new State(agentRows, agentCols, agentColors, walls, boxes, boxColors, goals);
+        // set the static variables for State class
+        State.walls = optWalls;
+        State.goals = optGoals;
+        State state = new State(agentRows, agentCols, agentColors, optBoxes, boxColors);
+        // return new State(agentRows, agentCols, agentColors, optWalls, optBoxes, boxColors, optGoals);
+        return state;
     }
 
     /**
