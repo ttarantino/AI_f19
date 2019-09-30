@@ -24,6 +24,8 @@ public class SearchClient
 
         // Read colors.
         serverMessages.readLine(); // #colors
+        int numAgents = 0;
+        int numBoxes = 0;
         Color[] agentColors = new Color[10];
         Color[] boxColors = new Color[26];
         String line = serverMessages.readLine();
@@ -38,18 +40,31 @@ public class SearchClient
                 if ('0' <= c && c <= '9')
                 {
                     agentColors[c - '0'] = color;
+                    numAgents++;
                 }
                 else if ('A' <= c && c <= 'Z')
                 {
                     boxColors[c - 'A'] = color;
+                    numBoxes++;
                 }
             }
             line = serverMessages.readLine();
         }
 
+        // optimize
+        Color[] optAgentColors = new Color[numAgents];
+        Color[] optBoxColors = new Color[numBoxes];
+
+        for(int i=0;i<numAgents;i++) {
+            optAgentColors[i] = agentColors[i];
+        }
+        for(int i=0;i<numBoxes;i++) {
+            optBoxColors[i] = boxColors[i];
+        }
+
         // Read initial state.
         // line is currently "#initial".
-        int numAgents = 0;
+        numAgents = 0;
         int[] agentRows = new int[10];
         int[] agentCols = new int[10];
         boolean[][] walls = new boolean[130][130];
@@ -137,7 +152,7 @@ public class SearchClient
         // set the static variables for State class
         State.walls = optWalls;
         State.goals = optGoals;
-        State state = new State(agentRows, agentCols, agentColors, optBoxes, boxColors);
+        State state = new State(agentRows, agentCols, optAgentColors, optBoxes, optBoxColors);
         // return new State(agentRows, agentCols, agentColors, optWalls, optBoxes, boxColors, optGoals);
         return state;
     }

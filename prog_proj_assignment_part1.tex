@@ -36,7 +36,7 @@
 
 \begin{table}
 \centering
-\begin{tabular}{|c|c|c|c|c|c|}
+\begin{tabular}{|l|l|c|c|c|c|}
 \hline
 \textbf{Level} & \textbf{Frontier} & \textbf{Time} & \textbf{Memory Used} & \textbf{Solution length} & \textbf{States Generated} \\
 \hline 
@@ -73,9 +73,104 @@ SACrunch & DFS & --- & exceeded & --- & --- \\
 \pagebreak
 \section{Exercise 2}
 
+\begin{enumerate}[(1)]
+\item
+For the new benchmarks, refer to Table 2.
+
+
+\item
+The improvement is quite significant in comparison to the first run. We saw improvements of 10 times in run-time. For instance, the \texttt{BFS} frontier on level \texttt{SAfriendofBFS} took 0.686 seconds in exercise 1 but only 0.071 seconds in exercise 2 --- this amounts to an improvement of \( \frac{0.686}{0.071} = 9.66 \) times.
+Furthermore, we saw huge improvements in memory use. For example, many of the levels in exercise 1 could not complete due to exceeding the memory limit (around 4~5 GB) but exercise 2 was able to finish all levels without exceeding the same memory limit. 
+
+
+\item
+We modified the code in three main ways: First, we changed the location of walls and goals in the \texttt{State} class into static variables so that they can be shared across instances. This significantly reduces the memory usage of the program since each instance of the class does not need its own walls and goals object. Next, we made the size (width and height) of the arrays dynamic --- not fixed to a length of 130. Finally, we made a similar change to the \texttt{Color} arrays by limiting the size to the number of agents and boxes. 
+
+
+\begin{table}
+\centering
+\begin{tabular}{|l|l|c|c|c|c|}
+\hline
+\textbf{Level} & \textbf{Frontier} & \textbf{Time} & \textbf{Memory Used} & \textbf{Solution length} & \textbf{States Generated} \\
+\hline 
+SAD1 & BFS & 0.041 s & 3.12 MB & 19 & 80 \\
+\hline
+SAD1 & DFS & 0.045 s & 2.40 MB & 27 & 75 \\
+\hline
+SAD2 & BFS & 14.458 s & 563.12 MB & 19 & 635,190 \\
+\hline
+SAD2 & DFS  & 0.032 s & 2.62 MB & 25 & 86 \\
+\hline
+SAfriendofDFS & BFS  & 1.718 s & 53.12 MB & 8 & 89,112 \\
+\hline
+SAfriendofDFS & DFS & 0.039 s & 2.90 MB & 60 & 305 \\
+\hline
+SAfriendofBFS & BFS & 0.071 s & 4.62 MB & 3 & 1,227 \\
+\hline
+SAfriendofBFS & DFS & 25.781 s & 1894.12 MB & 981,528 & 2,953,986 \\
+\hline
+SAFirefly & BFS & 18.280 s & 2052.00 MB & 60 & 1,961,416 \\
+\hline
+SAFirefly & DFS & 30.897 s & 3859.00 MB & 2,517,074 & 4,089,953 \\
+\hline
+SACrunch & BFS & 389.379 s & 4831.51 MB & 98 & 9,285,293 \\
+\hline
+SACrunch & DFS & 6.096 s & 664.00 MB & 380,992 & 1,023,377 \\
+\hline
+\end{tabular}
+\caption{Benchmarks table for Exercise 2}
+\end{table}
+\end{enumerate}
+
 
 \pagebreak
 \section{Exercise 3}
+
+\begin{table}
+\centering
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Level} & \textbf{Time} & \textbf{Memory Used} & \textbf{Solution length} & \textbf{States Generated} \\
+\hline 
+SAsoko1\_04 & 0.037 s & 2.31 MB & 2 & 3 \\
+\hline
+SAsoko1\_08 & 0.038 s & 2.25 MB & 6 & 15 \\
+\hline
+SAsoko1\_16 & 0.034 s & 2.50 MB & 14 & 68 \\
+\hline
+SAsoko1\_32 & 0.098 s & 2.81 MB & 30 & 266 \\
+\hline
+SAsoko1\_64 & 0.106 s & 5.28 MB & 62 & 1,034 \\
+\hline
+SAsoko1\_128 & 0.151 s & 9.01 MB & 126 & 4,128 \\
+\hline
+SAsoko2\_04 & 0.027 s & 2.31 MB & 2 & 44 \\
+\hline
+SAsoko2\_08 & 0.070 s & 4.00 MB & 6 & 660  \\
+\hline
+SAsoko2\_16 & 0.303 s & 42.63 MB & 14 & 8,580 \\
+\hline
+SAsoko2\_32 & 3.907 s & 571.00 MB & 30 & 118,093 \\
+\hline
+SAsoko2\_64 & --- & Memory exceeded & --- & --- \\
+\hline
+SAsoko2\_128 & --- & Memory exceeded & --- & --- \\
+\hline
+SAsoko3\_04  &  0.478 s & 25.20 MB & 8 & 17,016 \\
+\hline
+SAsoko3\_08 & --- & Memory exceeded & --- & --- \\
+\hline
+SAsoko3\_04 & --- & Memory exceeded & --- & --- \\
+\hline
+SAsoko3\_04  & --- & Memory exceeded & --- & --- \\
+\hline
+SAsoko3\_04  & --- & Memory exceeded & --- & --- \\
+\hline
+SAsoko3\_04  & --- & Memory exceeded & --- & --- \\
+\hline
+\end{tabular}
+\caption{BFS Benchmarks table for Exercise 3}
+\end{table}
 
 
 
