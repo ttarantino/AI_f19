@@ -172,6 +172,46 @@ SAsoko3\_04  & --- & Memory exceeded & --- & --- \\
 \caption{BFS Benchmarks table for Exercise 3}
 \end{table}
 
+\begin{enumerate}[(1)]
+\item
+Refer to Table 3.
 
+\item
+There is a big difference between the biggest size levels that the algorithm can handle among the three types of maps. This can be attributed to the differences in the growth of the state space sizes. 
+
+First, the \texttt{SAsoko1} map is a simple horizontal map of height 1 with one agent and one box. This limits the agent's possible actions only to moving West or East and either pushing the box East or pulling the box West. Furthermore, the increase in the level's size only increases the width of the map whereas the height of the map is constant. Thus the increase in level size has a linear relationship with the size of the state space. Let \(\ell\) be the size of the level such that \texttt{SAsoko1\_04} would have \(\ell = 4\). Let \(N\) be the number of agents, \(M\) the number of boxes, and \(A\) the number of possible actions. Then, it follows that the size of the state space has \(O(\ell N M A)\). Since \(N, M, A\) are constant for all \(\ell\), this can be simplified to \(O(\ell)\), a linear relationship. 
+
+Second, the \texttt{SAsoko2} map is a square map of size \(\ell \times \ell\) with one agent \(N = 1\) and one box \(M = 1\). Since the map is not limited as in the case with \texttt{SAsoko1}, the number of possible actions is higher. However, since there is one agent and one box, the size of the action set increases with the size of the map. Thus it follows that the size of the state space has \(O(\ell^2 N M A)\). Since \(N=1\) and \(M=1\), the number of possible actions \(A\) remains constant. Thus the size of the state space resembles quadratic growth \(O(\ell^2)\). 
+
+Lastly, 
+
+
+\end{enumerate}
+
+\pagebreak
+\section{Exercise 4}
+
+\begin{table}
+\centering
+\begin{tabular}{|l|l|c|c|c|}
+\hline
+\textbf{Level} & \textbf{Time} & \textbf{Memory Used} & \textbf{Solution length} & \textbf{States Generated} \\
+\hline
+ &  &  &  &  \\
+ \hline
+ &  &  &  &  \\
+ \hline
+ &  &  &  &  \\
+\hline
+\end{tabular}
+\caption{BFS benchmarks for selected Sokoban levels}
+\end{table}
+
+\begin{itemize}
+\item
+Refer to Table 4 for benchmarks for the selected Sokoban levels. 
+
+\item 
+\end{itemize}
 
 \end{document}
